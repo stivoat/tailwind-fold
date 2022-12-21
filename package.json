@@ -1,0 +1,140 @@
+{
+    "name": "tailwind-fold",
+    "displayName": "Tailwind Fold",
+    "description": "Improves code readability by folding class attributes",
+    "version": "0.0.1",
+    "icon": "images/icon.png",
+    "publisher": "stivo",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stivoat/tailwind-fold"
+    },
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "keywords": [
+        "tailwind",
+        "fold",
+        "clean code",
+        "pretty",
+        "inline css"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "tailwind-fold.toggleAutoFold",
+                "title": "Toggles automatic class attribute folding"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "tailwind-fold.toggleAutoFold",
+                "key": "ctrl+alt+a"
+            }
+        ],
+        "configuration": {
+            "title": "Tailwind Fold Settings",
+            "properties": {
+                "tailwind-fold.autoFold": {
+                    "order": 1,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically folds class attributes"
+                },
+                "tailwind-fold.foldStyle": {
+                    "order": 2,
+                    "type": "string",
+                    "default": "ALL",
+                    "description": "Whether to fold entire class attribute or only content in quotes",
+                    "enum": [
+                        "ALL",
+                        "QUOTES"
+                    ]
+                },
+                "tailwind-fold.unfoldIfLineSelected": {
+                    "order": 3,
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Automatically unfolds when the line is selected"
+                },
+                "tailwind-fold.showTailwindImage": {
+                    "order": 4,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Shows tailwind image before folded text"
+                },
+                "tailwind-fold.foldedText": {
+                    "order": 5,
+                    "type": "string",
+                    "default": "...",
+                    "description": "Text to show when folded"
+                },
+                "tailwind-fold.foldedTextColor": {
+                    "order": 6,
+                    "type": "string",
+                    "default": "#7cdbfe7e",
+                    "description": "Color of folded text"
+                },
+                "tailwind-fold.foldedTextBackgroundColor": {
+                    "order": 7,
+                    "type": "string",
+                    "default": "#52b7ee09",
+                    "description": "Background color of folded section"
+                },
+                "tailwind-fold.unfoldedTextOpacity": {
+                    "order": 8,
+                    "type": "number",
+                    "default": 1,
+                    "description": "Formats class list when unfolded",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "tailwind-fold.supportedLanguages": {
+                    "order": 9,
+                    "type": "array",
+                    "default": [
+                        "html",
+                        "typescriptreact",
+                        "javascriptreact",
+                        "typescript",
+                        "javascript",
+                        "vue-html",
+                        "vue",
+                        "php",
+                        "markdown",
+                        "coffeescript"
+                    ],
+                    "description": "Supported languages"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.74.0",
+        "@types/glob": "^8.0.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
+        "eslint": "^8.28.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.1.0",
+        "typescript": "^4.9.3",
+        "@vscode/test-electron": "^2.2.0"
+    }
+}
