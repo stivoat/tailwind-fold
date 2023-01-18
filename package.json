@@ -2,7 +2,7 @@
     "name": "tailwind-fold",
     "displayName": "Tailwind Fold",
     "description": "Improves code readability by folding class attributes",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "icon": "images/icon.png",
     "publisher": "stivo",
     "repository": {

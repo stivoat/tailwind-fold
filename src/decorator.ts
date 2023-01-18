@@ -11,7 +11,7 @@ export class Decorator {
     unfoldIfLineSelected: boolean = false
     supportedLanguages: string[] = []
 
-    regEx = /(class|className)=(['"`])(.*?)\2/g
+    regEx = /(class|className)=(['"`]|{(['"`]))(.*?)(\2|\3})/g
     regExGroup = 0
 
     unfoldedDecorationType = UnfoldedDecorationType()
@@ -40,7 +40,7 @@ export class Decorator {
         this.autoFold = Config.get<boolean>(Settings.AutoFold) ?? false
         this.unfoldIfLineSelected = Config.get<boolean>(Settings.UnfoldIfLineSelected) ?? false
         this.supportedLanguages = Config.get<string[]>(Settings.SupportedLanguages) ?? []
-        this.regExGroup = Config.get<string>(Settings.FoldStyle) === "ALL" ? 0 : 3
+        this.regExGroup = Config.get<string>(Settings.FoldStyle) === "ALL" ? 0 : 4
 
         this.unfoldedDecorationType.dispose()
         this.foldedDecorationType.dispose()
