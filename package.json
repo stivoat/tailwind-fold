@@ -109,7 +109,8 @@
                         "vue",
                         "php",
                         "markdown",
-                        "coffeescript"
+                        "coffeescript",
+                        "svelte"
                     ],
                     "description": "Supported languages"
                 }
