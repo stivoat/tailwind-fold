@@ -110,7 +110,8 @@
                         "php",
                         "markdown",
                         "coffeescript",
-                        "svelte"
+                        "svelte",
+                        "astro"
                     ],
                     "description": "Supported languages"
                 }
