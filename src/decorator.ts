@@ -69,7 +69,7 @@ export class Decorator {
 
             const text = match[0]
             const textToFold = match[this.regExGroup]
-						const classNames = textToFold.split(" ")
+			const classNames = textToFold.split(" ")
             const foldStartIndex = text.indexOf(textToFold)
 
             const foldStartPosition = this.activeEditor.document.positionAt(match.index + foldStartIndex)
@@ -77,7 +77,7 @@ export class Decorator {
                 match.index + foldStartIndex + textToFold.length
             )
             const range = new Range(foldStartPosition, foldEndPosition)
-						const foldLengthThreshold = Config.get<number>(Settings.FoldLengthThreshold) ?? 0
+			const foldLengthThreshold = Config.get<number>(Settings.FoldLengthThreshold) ?? 0
             if (
                 !this.autoFold ||
                 this.isRangeSelected(range) ||
@@ -86,11 +86,11 @@ export class Decorator {
                 this.unfoldedRanges.push(range)
                 continue
             }
-						if (classNames.length <= foldLengthThreshold) {
-							// If the length of textToFold is less than or equal to the threshold, skip folding
-							this.unfoldedRanges.push(range)
-							continue
-						}
+			if (classNames.length <= foldLengthThreshold) {
+				// If the length of textToFold is less than or equal to the threshold, skip folding
+				this.unfoldedRanges.push(range)
+				continue
+			}
             this.foldedRanges.push(range)
         }
 
