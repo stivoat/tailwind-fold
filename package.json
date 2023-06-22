@@ -114,6 +114,12 @@
                         "astro"
                     ],
                     "description": "Supported languages"
+                },
+                "tailwind-fold.foldLengthThreshold": {
+                    "order": 10,
+                    "type": "number",
+                    "default": 0,
+                    "description": "Specifies the minimum number of class attributes required for a section to fold"
                 }
             }
         }
