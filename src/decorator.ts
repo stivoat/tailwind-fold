@@ -11,7 +11,7 @@ export class Decorator {
     unfoldIfLineSelected: boolean = false
     supportedLanguages: string[] = []
 
-    regEx = /(class|className)=(['"`]|{(['"`]))(.*?)(\2|\3})/g
+    regEx = /(class|className)=(['"`]|{)(.*?)(\2|})/g
     regExGroup = 0
 
     unfoldedDecorationType = UnfoldedDecorationType()
@@ -68,9 +68,9 @@ export class Decorator {
             }
 
             const text = match[0]
-            const textToFold = match[this.regExGroup]
-            const classNames = match[4].split(" ")
-            const foldStartIndex = text.indexOf(textToFold)
+            const textToFold = match[3]
+            const classNames = match[3].split(" ")
+            const foldStartIndex = match[1].length + match[2].length + 1
 
             const foldStartPosition = this.activeEditor.document.positionAt(match.index + foldStartIndex)
             const foldEndPosition = this.activeEditor.document.positionAt(
