@@ -30,7 +30,8 @@
         "commands": [
             {
                 "command": "tailwind-fold.toggleAutoFold",
-                "title": "Toggles automatic class attribute folding"
+                "category": "Tailwind Fold",
+                "title": "Toggle Automatic Class Folding"
             }
         ],
         "keybindings": [
