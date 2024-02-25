@@ -120,7 +120,7 @@
                     "order": 10,
                     "type": "number",
                     "default": 0,
-                    "description": "Specifies the minimum number of class attributes required for a section to fold"
+                    "description": "Specifies the minimum number of characters required for a section to fold"
                 }
             }
         }

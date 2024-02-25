@@ -86,8 +86,8 @@ export class Decorator {
                 this.unfoldedRanges.push(range)
                 continue
             }
-            if (classNames.length < foldLengthThreshold) {
-                // If the length of class attributes is less than the threshold, skip folding
+            if (textToFold.length < foldLengthThreshold) {
+                // If the length of the text to fold is less than the threshold, skip folding
                 this.unfoldedRanges.push(range)
                 continue
             }
