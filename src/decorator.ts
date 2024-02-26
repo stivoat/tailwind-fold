@@ -12,7 +12,7 @@ export class Decorator {
     supportedLanguages: string[] = []
 
     // Matches class="..." or className="..." or class: "..." or className: "..."
-    regEx = /(class|className)(=|:|:\s)(['"`]|{(['"`]))(.*?)(\3|\4})/g
+    public regEx = /(class|className)(=|:|:\s)(['"`]|{(['"`]))(.*?)(\3|\4})/g
 
     regExGroup = 0
 
@@ -21,6 +21,7 @@ export class Decorator {
 
     foldedRanges: Range[] = []
     unfoldedRanges: Range[] = []
+  
 
     setActiveEditor(textEditor: TextEditor | undefined) {
         if (!textEditor) {
