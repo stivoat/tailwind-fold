@@ -112,7 +112,8 @@
                         "markdown",
                         "coffeescript",
                         "svelte",
-                        "astro"
+                        "astro",
+                        "erb"
                     ],
                     "description": "Supported languages"
                 },
