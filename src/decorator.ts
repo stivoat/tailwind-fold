@@ -1,8 +1,8 @@
 import { Range, TextEditor } from "vscode"
 import { FoldedDecorationType, UnfoldedDecorationType } from "./decorations"
 
-import { Settings } from "./configuration"
 import * as Config from "./configuration"
+import { Settings } from "./configuration"
 
 export class Decorator {
     activeEditor: TextEditor
@@ -11,8 +11,10 @@ export class Decorator {
     unfoldIfLineSelected: boolean = false
     supportedLanguages: string[] = []
 
-    regEx = /(class|className)=(['"`]|{(['"`]))(.*?)(\2|\3})/g
-    regExGroup = 0
+    regEx = /(class|className)(?:=|:|:\s)((({\s*?.*?\()([\s\S]*?)(\)\s*?}))|(({?\s*?(['"`]))([\s\S]*?)(\8|\9\s*?})))/g
+    regExGroupsAll = [0]
+    regExGroupsQuotes = [5, 10]
+    regExGroups = this.regExGroupsAll
 
     unfoldedDecorationType = UnfoldedDecorationType()
     foldedDecorationType = FoldedDecorationType()
@@ -40,7 +42,8 @@ export class Decorator {
         this.autoFold = Config.get<boolean>(Settings.AutoFold) ?? false
         this.unfoldIfLineSelected = Config.get<boolean>(Settings.UnfoldIfLineSelected) ?? false
         this.supportedLanguages = Config.get<string[]>(Settings.SupportedLanguages) ?? []
-        this.regExGroup = Config.get<string>(Settings.FoldStyle) === "ALL" ? 0 : 4
+        this.regExGroups =
+            Config.get<string>(Settings.FoldStyle) === "ALL" ? this.regExGroupsAll : this.regExGroupsQuotes
 
         this.unfoldedDecorationType.dispose()
         this.foldedDecorationType.dispose()
@@ -63,13 +66,21 @@ export class Decorator {
 
         let match
         while ((match = this.regEx.exec(documentText))) {
-            if (match && !match[this.regExGroup]) {
+            let matchedGroup
+
+            for (const group of this.regExGroups) {
+                if (match[group]) {
+                    matchedGroup = group
+                    break
+                }
+            }
+
+            if (matchedGroup === undefined) {
                 continue
             }
 
             const text = match[0]
-            const textToFold = match[this.regExGroup]
-            const classNames = match[4].split(" ")
+            const textToFold = match[matchedGroup]
             const foldStartIndex = text.indexOf(textToFold)
 
             const foldStartPosition = this.activeEditor.document.positionAt(match.index + foldStartIndex)
@@ -86,8 +97,8 @@ export class Decorator {
                 this.unfoldedRanges.push(range)
                 continue
             }
-            if (classNames.length < foldLengthThreshold) {
-                // If the length of class attributes is less than the threshold, skip folding
+            if (textToFold.length < foldLengthThreshold) {
+                // If the length of the text to fold is less than the threshold, skip folding
                 this.unfoldedRanges.push(range)
                 continue
             }

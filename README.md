@@ -33,7 +33,7 @@ This extension contributes the following settings:
 -   `tailwind-fold.foldedTextBackgroundColor`: Background color of the text when folded
 -   `tailwind-fold.unfoldedTextOpacity`: Opacity of unfolded class attributes
 -   `tailwind-fold.supportedLanguages`: Array of languages the extension is enabled for
--   `tailwind-fold.foldLengthThreshold`: Specifies the minimum number of class attributes required for a section to fold
+-   `tailwind-fold.foldLengthThreshold`: Specifies the minimum number of characters required for a section to fold
 
 ## Note
 

@@ -1,9 +1,3 @@
 # Change Log
 
-All notable changes to the "tailwind-collapse" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+Please see https://github.com/stivoat/tailwind-fold/releases for the full release notes.
