@@ -122,6 +122,20 @@
                     "type": "number",
                     "default": 0,
                     "description": "Specifies the minimum number of characters required for a section to fold"
+                },
+                "tailwind-fold.replaceText": {
+                    "order": 11,
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to enable text replacement at all (reduce \"foldedTextOpacity\" to fold with opacity)"
+                },
+                "tailwind-fold.foldedTextOpacity": {
+                    "order": 12,
+                    "type": "number",
+                    "default": 1,
+                    "description": "Class attribute opacity when folded",
+                    "minimum": 0,
+                    "maximum": 1
                 }
             }
         }

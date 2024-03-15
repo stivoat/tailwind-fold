@@ -31,18 +31,29 @@ export function UnfoldedDecorationType() {
 }
 
 export function FoldedDecorationType() {
+    const replaceTextEnabled = Config.get<boolean>(Settings.ReplaceText)
+    const foldedOpacity = Config.get<number>(Settings.FoldedTextOpacity).toString()
+
+    if (replaceTextEnabled) {
+        return window.createTextEditorDecorationType({
+            before: {
+                contentIconPath:
+                    Config.get<boolean>(Settings.ShowTailwindImage) === true ? generateScaledSVGPath() : undefined,
+                backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
+                margin: "0 0 0 -5px",
+                textDecoration: `none; opacity: ${foldedOpacity}`,
+            },
+            after: {
+                contentText: Config.get<string>(Settings.FoldedText) ?? "class",
+                backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
+                color: Config.get<string>(Settings.FoldedTextColor) ?? "#7cdbfe7e",
+                textDecoration: `none; opacity: ${foldedOpacity}`,
+            },
+            textDecoration: "none; display: none;",
+        })
+    }
+
     return window.createTextEditorDecorationType({
-        before: {
-            contentIconPath:
-                Config.get<boolean>(Settings.ShowTailwindImage) === true ? generateScaledSVGPath() : undefined,
-            backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
-            margin: "0 0 0 -5px",
-        },
-        after: {
-            contentText: Config.get<string>(Settings.FoldedText) ?? "class",
-            backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
-            color: Config.get<string>(Settings.FoldedTextColor) ?? "#7cdbfe7e",
-        },
-        textDecoration: "none; display: none;",
+        opacity: foldedOpacity,
     })
 }
