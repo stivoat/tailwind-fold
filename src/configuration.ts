@@ -7,6 +7,7 @@ export enum Settings {
     AutoFold = "autoFold",
     UnfoldIfLineSelected = "unfoldIfLineSelected",
     SupportedLanguages = "supportedLanguages",
+    ReplaceText = "replaceText",
 
     // Visuals
     FoldStyle = "foldStyle",
@@ -14,6 +15,7 @@ export enum Settings {
     FoldedText = "foldedText",
     FoldedTextColor = "foldedTextColor",
     FoldedTextBackgroundColor = "foldedTextBackgroundColor",
+    FoldedTextOpacity = "foldedTextOpacity",
     UnfoldedTextOpacity = "unfoldedTextOpacity",
     FoldLengthThreshold = "foldLengthThreshold",
 }
