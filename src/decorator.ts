@@ -11,7 +11,7 @@ export class Decorator {
     unfoldIfLineSelected: boolean = false
     supportedLanguages: string[] = []
 
-    regEx = /(class|className)(?:=|:|:\s)((({\s*?.*?\()([\s\S]*?)(\)\s*?}))|(({?\s*?(['"`]))([\s\S]*?)(\8|\9\s*?})))/g
+    regEx = /(class|className|tw)(?:=|:|:\s)((({\s*?.*?\()([\s\S]*?)(\)\s*?}))|(({?\s*?(['"`]))([\s\S]*?)(\8|\9\s*?})))/g
     regExGroupsAll = [0]
     regExGroupsQuotes = [5, 10]
     regExGroups = this.regExGroupsAll
