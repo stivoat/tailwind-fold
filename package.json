@@ -113,7 +113,8 @@
                         "coffeescript",
                         "svelte",
                         "astro",
-                        "erb"
+                        "erb",
+                        "blade"
                     ],
                     "description": "Supported languages"
                 },
