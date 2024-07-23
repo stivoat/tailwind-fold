@@ -2,7 +2,7 @@
     "name": "tailwind-fold",
     "displayName": "Tailwind Fold",
     "description": "Improves code readability by folding class attributes",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "icon": "images/icon.png",
     "publisher": "stivo",
     "repository": {
@@ -132,7 +132,8 @@
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/runTest.js",
+        "package": "npm run compile && vsce package"
     },
     "devDependencies": {
         "@types/glob": "^8.0.0",
@@ -142,6 +143,7 @@
         "@typescript-eslint/eslint-plugin": "^5.45.0",
         "@typescript-eslint/parser": "^5.45.0",
         "@vscode/test-electron": "^2.2.0",
+        "@vscode/vsce": "^2.31.1",
         "eslint": "^8.28.0",
         "glob": "^8.0.3",
         "mocha": "^10.1.0",
