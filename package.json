@@ -113,7 +113,10 @@
                         "coffeescript",
                         "svelte",
                         "astro",
-                        "erb"
+                        "erb",
+                        "handlebars",
+                        "glimmer-js",
+                        "glimmer-ts"
                     ],
                     "description": "Supported languages"
                 },
