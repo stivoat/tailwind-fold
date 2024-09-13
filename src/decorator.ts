@@ -1,7 +1,8 @@
-import { Range, TextEditor } from "vscode"
+import { Range, TextEditor, workspace} from "vscode"
 import { FoldedDecorationType, UnfoldedDecorationType } from "./decorations"
 
 import * as Config from "./configuration"
+import * as fs from "fs"
 import { Settings } from "./configuration"
 
 export class Decorator {
@@ -18,6 +19,7 @@ export class Decorator {
 
     unfoldedDecorationType = UnfoldedDecorationType()
     foldedDecorationType = FoldedDecorationType()
+    currentWorkingFolder: string = workspace.workspaceFolders[0].uri.path
 
     foldedRanges: Range[] = []
     unfoldedRanges: Range[] = []
@@ -36,6 +38,17 @@ export class Decorator {
 
         Config.set(Settings.AutoFold, this.autoFold)
         return this.autoFold
+    }
+
+    toggleTailwindConfigFound(): void {
+        const filesNames = fs.readdirSync(this.currentWorkingFolder)
+
+        filesNames.map((file: string) => {
+            if (!(file === "tailwind.config.js")) {
+                this.autoFold = !this.autoFold
+                this.updateDecorations()
+            }
+        })
     }
 
     loadConfig() {

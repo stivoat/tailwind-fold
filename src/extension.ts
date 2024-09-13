@@ -32,10 +32,15 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
         decorator.toggleAutoFold()
     })
 
+    const toggleTailwindFoundCommand = vscode.commands.registerCommand(Command.ToggleTailwindConfigFound, () => {
+        decorator.toggleTailwindConfigFound()
+    })
+
     subscriptions.push(changeActiveTextEditor)
     subscriptions.push(changeTextEditorSelection)
     subscriptions.push(changeConfiguration)
     subscriptions.push(toggleCommand)
+    subscriptions.push(toggleTailwindFoundCommand)
 }
 
 export function deactivate({ subscriptions }: vscode.ExtensionContext) {

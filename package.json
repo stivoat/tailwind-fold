@@ -32,12 +32,21 @@
                 "command": "tailwind-fold.toggleAutoFold",
                 "category": "Tailwind Fold",
                 "title": "Toggle Automatic Class Folding"
+            },
+            {
+                "command": "tailwind-fold.toggleTailwindConfigFound",
+                "category": "Tailwind Fold",
+                "title": "Toggle Folding For Only tailwind.config.js found"
             }
         ],
         "keybindings": [
             {
                 "command": "tailwind-fold.toggleAutoFold",
                 "key": "ctrl+alt+a"
+            },
+            {
+                "command": "tailwind-fold.toggleTailwindFound",
+                "key": "ctrl+alt+t"
             }
         ],
         "configuration": {
