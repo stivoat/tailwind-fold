@@ -113,7 +113,8 @@
                         "coffeescript",
                         "svelte",
                         "astro",
-                        "erb"
+                        "erb",
+                        "django-html"
                     ],
                     "description": "Supported languages"
                 },
