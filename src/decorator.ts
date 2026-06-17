@@ -3,6 +3,7 @@ import { FoldedDecorationType, UnfoldedDecorationType } from "./decorations"
 
 import * as Config from "./configuration"
 import { Settings } from "./configuration"
+import { doesSelectionActivateRange } from "./rangeActivation"
 
 export class Decorator {
     activeEditor: TextEditor
@@ -110,9 +111,7 @@ export class Decorator {
     }
 
     isRangeSelected(range: Range): boolean {
-        return !!(
-            this.activeEditor.selection.contains(range) || this.activeEditor.selections.find((s) => range.contains(s))
-        )
+        return this.activeEditor.selections.some((selection) => doesSelectionActivateRange(selection, range))
     }
 
     isLineOfRangeSelected(range: Range): boolean {
